@@ -13,7 +13,7 @@ const Menu = () => {
     'Local Expertise': {
       title: 'Local Expertise',
       description: 'We know how tedious it is to sit for long journeys, hence we have got you our friendly drivers who are no stranger to any of the local streets of Sydney. They know when to choose which route to quickly drop you at your destination without keeping you much awaited. Our Drivers (Local Expertise) are what set us apart from other competitors in this field.',
-      image: 'https://images.unsplash.com/photo-1507699622108-4be3abd695ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'
+      image: 'https://images.unsplash.com/photo-1507699622108-4be3abd65ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'
     },
     'General Transfers': {
       title: 'General Transfers',
