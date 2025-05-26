@@ -1,45 +1,12 @@
-/* Base styles */
 .Hero-hero-container {
-  width: 100vw;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .Hero-full-screen-image {
   width: 100%;
-  height: auto;
   display: block;
-}
-
-/* Optional: Add some animation */
-.Hero-full-screen-image {
-  animation: fadeIn 1.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Optional: Add responsive adjustments */
-@media (max-width: 768px) {
-  .Hero-hero-container {
-    height: auto;
-    min-height: 50vh;
-    margin: 0;
-  }
-}
-
-@media (max-width: 320px) {
-
-  .Hero-hero-container{
-    margin-top: -20px;
-  }
+  margin: 0;
+  padding: 0;
 }
