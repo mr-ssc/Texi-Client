@@ -3,6 +3,7 @@ import Hero from './Hero'
 import Inquiry from './Inquiry'
 import Elementor from "./Elementor" 
 import Faq from './Faq'
+import Menu from './Menu'
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <Hero />
       <Inquiry/>
       <Elementor/>
+      <Menu/>
       <Faq/>
     </>
   )

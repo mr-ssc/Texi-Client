@@ -6,6 +6,7 @@ import Hero from "./component/Hero"
 import Inquiry from './component/Inquiry';
 import Elementor from './component/Elementor';
 import Faq from './component/Faq';
+import Menu from './component/Menu';
 
 
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='/Inquiry' element={<Inquiry />}></Route>
         <Route path='/Elementor' element={<Elementor />}></Route>
         <Route path='/Faq' element={<Faq />}></Route>
+        <Route path='/Menu' element={<Menu />}></Route>
 
 
       </Routes>
