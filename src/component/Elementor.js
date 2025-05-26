@@ -1,5 +1,6 @@
 import React from 'react';
 import './Elementor.css';
+import texi from "./Img/e-1.png"
 
 const Elementor = () => {
   return (
@@ -22,7 +23,7 @@ const Elementor = () => {
                 {/* Image (50% width on right side) */}
                 <div className="elementor-image-box animate__animated animate__fadeInRight">
                   <img 
-                    src="https://via.placeholder.com/600x400" 
+                    src={texi}
                     alt="Silver Taxi Sydney" 
                     className="elementor-image"
                   />
