@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "./Inquiry.css";
+import firebase from '../component/firebase'; // Make sure to set up firebase.js as shown earlier
 
 const Inquiry = () => {
   const [formData, setFormData] = useState({
@@ -35,9 +36,10 @@ const Inquiry = () => {
     setIsSubmitting(true);
     
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      console.log('Form submitted:', formData);
+      // Call Firebase Cloud Function to send email
+      const sendEmail = firebase.functions().httpsCallable('sendInquiryEmail');
+      await sendEmail(formData);
+      
       alert('Thank you for your inquiry! We will contact you shortly.');
       
       // Reset form after submission
