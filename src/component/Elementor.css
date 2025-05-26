@@ -1,0 +1,138 @@
+/* Base Styles */
+.elementor-section {
+  padding: 60px 0;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+  font-family: 'Roboto', sans-serif;
+}
+
+.elementor-heading-title {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+  background: linear-gradient(to right, #2c3e50, #3498db);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-align: center;
+}
+
+.elementor-paragraph {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.elementor-image-text-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.elementor-image-box {
+  flex: 0 0 50%;
+  padding: 15px;
+}
+
+.elementor-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.elementor-image:hover {
+  transform: scale(1.02);
+}
+
+.elementor-text-box {
+  flex: 0 0 50%;
+  padding: 15px;
+}
+
+.elementor-subheading {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  background: linear-gradient(to right, #3498db, #2c3e50);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Animations */
+.animate__animated {
+  animation-duration: 1s;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+  from { 
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from { 
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from { 
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .elementor-image-box, 
+  .elementor-text-box {
+    flex: 0 0 100%;
+  }
+  
+  .elementor-heading-title {
+    font-size: 2rem;
+  }
+  
+  .elementor-subheading {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .elementor-section {
+    padding: 40px 0;
+  }
+  
+  .elementor-heading-title {
+    font-size: 1.8rem;
+  }
+  
+  .elementor-paragraph {
+    font-size: 1rem;
+  }
+}
