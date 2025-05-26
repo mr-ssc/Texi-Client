@@ -31,6 +31,6 @@
 @media (max-width: 768px) {
   .Hero-hero-container {
     height: auto;
-    min-height: 50vh;
+    min-height: 40vh;
   }
 }
