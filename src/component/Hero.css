@@ -1,12 +1,120 @@
+/* Hero.css */
 .Hero-hero-container {
+  position: relative;
+  height: 100vh;
   width: 100%;
-  margin: 0;
-  padding: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+  filter: blur(600px) linear-gradient(45deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+  z-index: 1;
 }
 
 .Hero-full-screen-image {
+  position: absolute;
   width: 100%;
-  display: block;
-  margin: 0;
-  padding: 0;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.1);
+  opacity: 0;
+  transition: all 1.5s ease-out;
+  
+}
+
+.Hero-full-screen-image.Hero-animate {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.Hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  padding: 20px;
+  max-width: 800px;
+}
+
+.Hero-title {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  transform: translateY(30px);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.5s forwards;
+}
+
+.Hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  transform: translateY(30px);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.8s forwards;
+}
+
+.Hero-cta {
+  background: #e0a800;
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transform: translateY(30px);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 1.1s forwards;
+  transition: all 0.3s ease;
+}
+
+.Hero-cta:hover {
+  background: #fbbe08d9;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  border: 2px solid #fff;
+}
+
+@keyframes fadeInUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .Hero-title {
+    font-size: 2.5rem;
+    margin-top: -7rem;
+  }
+  
+  .Hero-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .Hero-cta {
+    padding: 12px 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Hero-title {
+    font-size: 2rem;
+  }
+  
+  .Hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .Hero-content {
+    padding: 10px;
+  }
 }

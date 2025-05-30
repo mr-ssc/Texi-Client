@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      {/* <Hero /> */}
+      <Hero />
       <Inquiry />
       <Elementor />
       <Menu />
