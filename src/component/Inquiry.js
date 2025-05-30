@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import "./Inquiry.css";
-import firebase from '../component/firebase'; // Make sure to set up firebase.js as shown earlier
+import './Inquiry.css';
 
 const Inquiry = () => {
   const [formData, setFormData] = useState({
@@ -31,18 +30,16 @@ const Inquiry = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    try {
-      // Call Firebase Cloud Function to send email
-      const sendEmail = firebase.functions().httpsCallable('sendInquiryEmail');
-      await sendEmail(formData);
-      
+    // Simulate form submission
+    setTimeout(() => {
       alert('Thank you for your inquiry! We will contact you shortly.');
+      setIsSubmitting(false);
       
-      // Reset form after submission
+      // Reset form
       setFormData({
         serviceType: '',
         pickupAddress: '',
@@ -60,34 +57,29 @@ const Inquiry = () => {
         tripType: 'one_way',
         additionalInfo: ''
       });
-    } catch (error) {
-      console.error('Submission error:', error);
-      alert('There was an error submitting your form. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
+    }, 1500);
   };
 
   return (
-    <div className='inquiry-container'>
-      <div className='inquiry-header'>
-        <h2 className='inquiry-title animate-pop'>Easy2Solutions Taxi Service</h2>
-        <p className='inquiry-subtitle animate-fade'>
-          Looking For Taxi? Just Call Us To Have A Hassle Free Sydney Ride With Silver Taxi Service Sydney.
+    <div className="inquiry-container">
+      <div className="inquiry-header">
+        <h2 className="inquiry-title animate-pop">Platinum Taxi Service</h2>
+        <p className="inquiry-subtitle animate-fade">
+          Looking For Taxi? Just Call Us To Have A Hassle Free Sydney Ride With Platinum Taxi Service.
         </p>
-        <p className='inquiry-contact animate-fade'>
+        <p className="inquiry-contact animate-fade">
           <i className="fas fa-phone-alt"></i> Mobile: +61 123 456 789
         </p>
       </div>
 
-      <form className='inquiry-form animate-slide-up' onSubmit={handleSubmit}>
-        <div className='form-grid'>
-          {/* Service Type */}
-          <div className='form-group'>
-            <label htmlFor="serviceType" className='form-label'>Service Type *</label>
+      <form className="inquiry-form animate-slide-up" onSubmit={handleSubmit}>
+        <div className="form-grid">
+          {/* Row 1 */}
+          <div className="form-group">
+            <label htmlFor="serviceType" className="form-label">Service Type *</label>
             <select 
               id="serviceType"
-              className='form-select'
+              className="form-select"
               name="serviceType"
               value={formData.serviceType}
               onChange={handleChange}
@@ -105,13 +97,12 @@ const Inquiry = () => {
             </select>
           </div>
 
-          {/* Pickup Address */}
-          <div className='form-group'>
-            <label htmlFor="pickupAddress" className='form-label'>Pickup Address *</label>
+          <div className="form-group">
+            <label htmlFor="pickupAddress" className="form-label">Pickup Address *</label>
             <input 
               type="text" 
               id="pickupAddress"
-              className='form-input' 
+              className="form-input" 
               placeholder="Enter pickup address" 
               name="pickupAddress"
               value={formData.pickupAddress}
@@ -120,13 +111,12 @@ const Inquiry = () => {
             />
           </div>
 
-          {/* Drop Address */}
-          <div className='form-group'>
-            <label htmlFor="dropAddress" className='form-label'>Drop Address *</label>
+          <div className="form-group">
+            <label htmlFor="dropAddress" className="form-label">Drop Address *</label>
             <input 
               type="text" 
               id="dropAddress"
-              className='form-input' 
+              className="form-input" 
               placeholder="Enter drop address" 
               name="dropAddress"
               value={formData.dropAddress}
@@ -135,124 +125,38 @@ const Inquiry = () => {
             />
           </div>
 
-          {/* Pickup Date & Time */}
-          <div className='form-group'>
-            <label htmlFor="pickupDate" className='form-label'>Pickup Date *</label>
+          {/* Row 2 */}
+          <div className="form-group">
+            <label htmlFor="pickupDate" className="form-label">Pickup Date *</label>
             <input 
               type="date" 
               id="pickupDate"
-              className='form-input' 
+              className="form-input" 
               name="pickupDate"
               value={formData.pickupDate}
               onChange={handleChange}
               required
             />
           </div>
-          <div className='form-group'>
-            <label htmlFor="pickupTime" className='form-label'>Pickup Time *</label>
+          
+          <div className="form-group">
+            <label htmlFor="pickupTime" className="form-label">Pickup Time *</label>
             <input 
               type="time" 
               id="pickupTime"
-              className='form-input' 
+              className="form-input" 
               name="pickupTime"
               value={formData.pickupTime}
               onChange={handleChange}
               required
             />
           </div>
-
-          {/* Name Fields */}
-          <div className='form-group'>
-            <label htmlFor="firstName" className='form-label'>First Name *</label>
-            <input 
-              type="text" 
-              id="firstName"
-              className='form-input' 
-              placeholder="Enter first name" 
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className='form-group'>
-            <label htmlFor="lastName" className='form-label'>Last Name *</label>
-            <input 
-              type="text" 
-              id="lastName"
-              className='form-input' 
-              placeholder="Enter last name" 
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          {/* Email */}
-          <div className='form-group'>
-            <label htmlFor="email" className='form-label'>Email *</label>
-            <input 
-              type="email" 
-              id="email"
-              className='form-input' 
-              placeholder="Enter email address" 
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          {/* Mobile */}
-          <div className='form-group'>
-            <label htmlFor="mobile" className='form-label'>Mobile Number *</label>
-            <div className='phone-input'>
-              <select 
-                className='country-code'
-                name="countryCode"
-                value={formData.countryCode}
-                onChange={handleChange}
-              >
-                <option value="+61">🇦🇺 +61</option>
-                <option value="+1">🇺🇸 +1</option>
-                <option value="+44">🇬🇧 +44</option>
-                <option value="+64">🇳🇿 +64</option>
-                <option value="+91">🇮🇳 +91</option>
-              </select>
-              <input 
-                type="tel" 
-                id="mobile"
-                className='form-input phone-number' 
-                placeholder="123 456 789" 
-                name="mobile"
-                value={formData.mobile}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          </div>
-
-          {/* Business Name */}
-          <div className='form-group'>
-            <label htmlFor="businessName" className='form-label'>Business Name (if applicable)</label>
-            <input 
-              type="text" 
-              id="businessName"
-              className='form-input' 
-              placeholder="Enter business name" 
-              name="businessName"
-              value={formData.businessName}
-              onChange={handleChange}
-            />
-          </div>
-
-          {/* Passengers */}
-          <div className='form-group'>
-            <label htmlFor="passengers" className='form-label'>Number of Passengers *</label>
+          
+          <div className="form-group">
+            <label htmlFor="passengers" className="form-label">Passengers *</label>
             <select 
               id="passengers"
-              className='form-select'
+              className="form-select"
               name="passengers"
               value={formData.passengers}
               onChange={handleChange}
@@ -268,12 +172,96 @@ const Inquiry = () => {
             </select>
           </div>
 
-          {/* Taxi Type */}
-          <div className='form-group'>
-            <label htmlFor="taxiType" className='form-label'>Taxi Type *</label>
+          {/* Row 3 */}
+          <div className="form-group">
+            <label htmlFor="firstName" className="form-label">First Name *</label>
+            <input 
+              type="text" 
+              id="firstName"
+              className="form-input" 
+              placeholder="Enter first name" 
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="lastName" className="form-label">Last Name *</label>
+            <input 
+              type="text" 
+              id="lastName"
+              className="form-input" 
+              placeholder="Enter last name" 
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="email" className="form-label">Email *</label>
+            <input 
+              type="email" 
+              id="email"
+              className="form-input" 
+              placeholder="Enter email address" 
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          {/* Row 4 */}
+          <div className="form-group">
+            <label htmlFor="mobile" className="form-label">Mobile Number *</label>
+            <div className="phone-input">
+              <select 
+                className="country-code"
+                name="countryCode"
+                value={formData.countryCode}
+                onChange={handleChange}
+              >
+                <option value="+61">🇦🇺 +61</option>
+                <option value="+1">🇺🇸 +1</option>
+                <option value="+44">🇬🇧 +44</option>
+                <option value="+64">🇳🇿 +64</option>
+                <option value="+91">🇮🇳 +91</option>
+              </select>
+              <input 
+                type="tel" 
+                id="mobile"
+                className="form-input phone-number" 
+                placeholder="123 456 789" 
+                name="mobile"
+                value={formData.mobile}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="businessName" className="form-label">Business Name</label>
+            <input 
+              type="text" 
+              id="businessName"
+              className="form-input" 
+              placeholder="Enter business name" 
+              name="businessName"
+              value={formData.businessName}
+              onChange={handleChange}
+            />
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="taxiType" className="form-label">Taxi Type *</label>
             <select 
               id="taxiType"
-              className='form-select'
+              className="form-select"
               name="taxiType"
               value={formData.taxiType}
               onChange={handleChange}
@@ -289,12 +277,12 @@ const Inquiry = () => {
             </select>
           </div>
 
-          {/* Trip Type */}
-          <div className='form-group'>
-            <label htmlFor="tripType" className='form-label'>Trip Type *</label>
+          {/* Row 5 */}
+          <div className="form-group">
+            <label htmlFor="tripType" className="form-label">Trip Type *</label>
             <select 
               id="tripType"
-              className='form-select'
+              className="form-select"
               name="tripType"
               value={formData.tripType}
               onChange={handleChange}
@@ -304,13 +292,12 @@ const Inquiry = () => {
               <option value="return">Return Trip</option>
             </select>
           </div>
-
-          {/* Additional Info */}
-          <div className='form-group full-width'>
-            <label htmlFor="additionalInfo" className='form-label'>Additional Information</label>
+          
+          <div className="form-group full-width">
+            <label htmlFor="additionalInfo" className="form-label">Additional Information</label>
             <textarea 
               id="additionalInfo"
-              className='form-textarea' 
+              className="form-textarea" 
               placeholder="E.g.: Room No, Additional Contact Number"
               name="additionalInfo"
               value={formData.additionalInfo}
@@ -321,7 +308,7 @@ const Inquiry = () => {
 
         <button 
           type="submit" 
-          className='submit-btn'
+          className="submit-btn"
           disabled={isSubmitting}
         >
           {isSubmitting ? (
